@@ -1,0 +1,10 @@
+- [x] User signup
+- [x] User login/logout
+- [ ] Standard form validation
+- [x] Protected Routes (jwt auth)
+- [x] Create a blog
+- [x] Blog List Page
+- [ ] View a blog with like and comment
+- [x] Edit a blog
+- [x] Delete a blog
+- [x] Save everything in the DB
