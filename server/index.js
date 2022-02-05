@@ -3,10 +3,12 @@ const app = express()
 const connectDB = require('./db');
 const blogRoutes = require("./routes/blog.routes")
 const authRoutes = require("./routes/auth.routes")
+const cors = require('cors');
 require('dotenv').config();
 
 
 app.use(express.json());
+app.use(cors)
 const port = process.env.PORT||5000;
 connectDB();
 app.use('/api/blog',blogRoutes);

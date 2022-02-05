@@ -16,6 +16,10 @@ const blogSchema = new Schema({
         type:String,
         required:true
     },
+    date:{
+        type:Date,
+        required:true,
+    },
     likes:[{type:ObjectId,ref:"User"}],
     comments:[{type:String,
         author:{type:ObjectId,ref:"User"}}],
