@@ -11,6 +11,7 @@ function App() {
           Blog
         </Link>
         <Link to="/auth">Login</Link>
+        <Link to="/blog/create">Create</Link>
       </nav>   
     </div>
   );

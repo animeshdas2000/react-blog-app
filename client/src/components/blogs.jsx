@@ -1,31 +1,17 @@
-import React from "react";
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { apiInstance } from "../axios";
 function Blogs() {
-  const blogs = [
-    {
-      title: "Hello World",
-      Date: "2022-02-03",
-      img: "https://picsum.photos/200/200",
-    },
-    {
-      title: "Hello World",
-      Date: "2022-02-03",
-      img: "https://picsum.photos/200/200",
-    },
-    {
-      title: "Hello World",
-      Date: "2022-02-03",
-      img: "https://picsum.photos/200/200",
-    },
-    {
-      title: "Hello World",
-      Date: "2022-02-03",
-      img: "https://picsum.photos/200/200",
-    },
-  ];
+  const [blogs,setBlogs]= useState([]);
+  useEffect(()=>{
+    fetch('http://localhost:5000/api/blog/all')
+    .then(res=>console.log(res))
+
+  },[])
   return (
     <div className="container">
       <div className="row">
+        Hello
         {blogs.map((val, key) => {
           return (
             <div className="col">

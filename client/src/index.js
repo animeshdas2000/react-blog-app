@@ -8,6 +8,7 @@ import Blogs from "./components/blogs";
 import Blog from "./components/blog";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BlogEditor from "./components/BlogEditor";
+import Create from "./components/createBlog";
 
 ReactDOM.render(
  
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Route path="blog/all" element={<Blogs />} />
       <Route path="blog" element={<Blog />} />
       <Route path="blog/blogId/edit" element={<BlogEditor/>}/>
+      <Route path="blog/create" element={<Create/>}/>
       <Route path="auth" element={<Auth/>} />
       <Route
       path="*"
