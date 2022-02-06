@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
     // Provide a wildcard as a fallback for all routes
     app.get("*", (req, res) => {
         res.sendFile(
-            path.resolve(__dirname, "../client", "build", "index.html")
+            path.resolve(__dirname, "client", "build", "index.html")
         );
     });
 }
