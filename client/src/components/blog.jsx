@@ -4,7 +4,7 @@ import {IoArrowBackOutline} from "react-icons/io5"
 import {useParams,Link} from "react-router-dom";
 import axios from "axios"
 import {Button} from "reactstrap"
-import {formatDate} from "../helper.js"
+import {baseURL, formatDate} from "../helper.js"
 
 
 function Blog() {
@@ -12,7 +12,7 @@ function Blog() {
   // const [like,setLike] = useState(true)
   const [blog,setBlog]= useState([]);
   useEffect(()=>{
-    axios.get(`http://localhost:5000/api/blog/${params.blogId}`)
+    axios.get(`${baseURL}api/blog/${params.blogId}`)
       .then(res=>{console.log(res.data)
       setBlog(res.data)
       })

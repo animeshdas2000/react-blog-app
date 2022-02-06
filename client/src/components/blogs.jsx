@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {Link} from "react-router-dom"
 import {Button} from "reactstrap"
+import { baseURL } from "../helper";
 function Blogs() {
   const [blogs,setBlogs]= useState([]);
   useEffect(()=>{
-    axios.get("http://localhost:5000/api/blog/all")
+    axios.get(`${baseURL}/api/blog/all`)
       .then(res=>{console.log(res.data)
       setBlogs(res.data)
       })

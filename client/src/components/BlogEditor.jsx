@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import { useParams,useNavigate, } from "react-router-dom";
 import { Form, FormGroup, Input, Button } from "reactstrap";
 import axios from "axios";
-import {formatDate} from "../helper"
+import {baseURL, formatDate} from "../helper"
 
 function BlogEditor() {
   let params = useParams();
@@ -12,7 +12,7 @@ function BlogEditor() {
   const [image, setImage] = useState("");
   const [date, setDate] = useState("");
   useEffect(()=>{
-    axios.get(`http://localhost:5000/api/blog/${params.blogId}`)
+    axios.get(`${baseURL}/api/blog/${params.blogId}`)
       .then(res=>{
       setTitle(res.data.title);
       setBody(res.data.body)
@@ -36,7 +36,7 @@ function BlogEditor() {
     };
     axios
       .post(
-        `http://localhost:5000/api/blog/edit/${params.blogId}`,
+        `${baseURL}/api/blog/edit/${params.blogId}`,
         Blog,
         config
       )

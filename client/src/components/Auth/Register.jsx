@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { baseURL } from "../../helper";
 function Register() {
   const [modal, setModal] = React.useState(false);
   const toggle = () => setModal(!modal);
@@ -34,7 +35,7 @@ function Register() {
       },
     };
     axios
-      .post("http://localhost:5000/api/auth/register", userData, config)
+      .post(`${baseURL}api/auth/register`, userData, config)
       .then((res) => res.data)
       .then((data) => {
         if (data.err) {

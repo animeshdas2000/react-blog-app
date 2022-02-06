@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Button,Container,Form,FormGroup,Input } from "reactstrap";
+import { baseURL } from "../helper";
 function Create() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -18,7 +19,7 @@ function Create() {
       },
     };
     axios
-      .post("http://localhost:5000/api/blog/create", Blog, config)
+      .post(`${baseURL}api/blog/create`, Blog, config)
       .then((res) => {
         setTitle("");
         setBody("");

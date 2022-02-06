@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import axios from "axios"
 import {Link,useNavigate} from "react-router-dom"
+import { baseURL } from "../../helper";
 
 function Login() {
   const [modal, setModal] = React.useState(false);
@@ -28,7 +29,7 @@ function Login() {
         'Content-Type': 'application/json'
       },
     }
-    axios.post("http://localhost:5000/api/auth/login",userData,config)
+    axios.post(`${baseURL}api/auth/login`,userData,config)
       .then(res=>res.data)
       .then((data)=>{
         if(data.err){
