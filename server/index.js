@@ -4,6 +4,7 @@ const connectDB = require('./db');
 const blogRoutes = require("./routes/blog.routes")
 const authRoutes = require("./routes/auth.routes")
 const cors = require('cors');
+const path = require('path')
 require('dotenv').config();
 
 
