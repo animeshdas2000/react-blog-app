@@ -3,23 +3,27 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter, Route,Routes } from "react-router-dom";
-import Auth from "./components/auth";
+import Auth from "./components/Auth/Login";
+import Register from "./components/Auth/Register"
 import Blogs from "./components/blogs";
 import Blog from "./components/blog";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BlogEditor from "./components/BlogEditor";
 import Create from "./components/createBlog";
+import Header from "./components/header";
 
 ReactDOM.render(
  
   <BrowserRouter>
+    <Header/>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="blog/all" element={<Blogs />} />
-      <Route path="blog" element={<Blog />} />
-      <Route path="blog/blogId/edit" element={<BlogEditor/>}/>
+      <Route path="blog/:blogId" element={<Blog />} />
+      <Route path="blog/:blogId/edit" element={<BlogEditor/>}/>
       <Route path="blog/create" element={<Create/>}/>
-      <Route path="auth" element={<Auth/>} />
+      <Route path="auth/login" element={<Auth/>} />
+      <Route path="auth/register" element={<Register/>} />
       <Route
       path="*"
       element={

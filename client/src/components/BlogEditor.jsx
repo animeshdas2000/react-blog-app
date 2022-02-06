@@ -1,89 +1,100 @@
-import React from "react";
-import {Form,FormGroup,Label,Input,Button,FormText} from "reactstrap"
+import React, { useState,useEffect } from "react";
+import { useParams,useNavigate, } from "react-router-dom";
+import { Form, FormGroup, Input, Button } from "reactstrap";
+import axios from "axios";
+import {formatDate} from "../helper"
+
 function BlogEditor() {
+  let params = useParams();
+  let navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [image, setImage] = useState("");
+  const [date, setDate] = useState("");
+  useEffect(()=>{
+    axios.get(`http://localhost:5000/api/blog/${params.blogId}`)
+      .then(res=>{
+      setTitle(res.data.title);
+      setBody(res.data.body)
+      setImage(res.data.img)
+      setDate(formatDate(res.data.date))
+      })
+      .catch(err=>console.log(err))
+  },[])
+  const handleSubmit = () => {
+    const Blog = JSON.stringify({
+      title: title,
+      body: body,
+      img: image,
+      date: date,
+    });
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        auth: localStorage.getItem("jwt"),
+      },
+    };
+    axios
+      .post(
+        `http://localhost:5000/api/blog/edit/${params.blogId}`,
+        Blog,
+        config
+      )
+      .then(() => {
+        navigate(`/blog/${params.blogId}`)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <div>
+    <div className="container">
+      <div className="col">
+        <h2>Blog Editor</h2>
+      </div>
+
       <Form>
         <FormGroup>
-          <Label for="exampleEmail">Email</Label>
           <Input
-            id="exampleEmail"
-            name="email"
-            placeholder="with a placeholder"
-            type="email"
+            name="title"
+            placeholder="Your Title Goes here"
+            type="text"
+            value={title}
+            required
+            onChange={(e) => setTitle(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="examplePassword">Password</Label>
           <Input
-            id="examplePassword"
-            name="password"
-            placeholder="password placeholder"
-            type="password"
+            name="image"
+            placeholder="Image Link"
+            value={image}
+            type="url"
+            onChange={(e) => setImage(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="exampleSelect">Select</Label>
-          <Input id="exampleSelect" name="select" type="select">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for="exampleSelectMulti">Select Multiple</Label>
           <Input
-            id="exampleSelectMulti"
-            multiple
-            name="selectMulti"
-            type="select"
-          >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Input>
+            type="date"
+    
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          ></Input>
         </FormGroup>
         <FormGroup>
-          <Label for="exampleText">Text Area</Label>
-          <Input id="exampleText" name="text" type="textarea" />
+          <textarea
+            placeholder="Add your content here"
+            name="text"
+            className="form-control row-cols-10"
+            rows="10"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          ></textarea>
         </FormGroup>
-        <FormGroup>
-          <Label for="exampleFile">File</Label>
-          <Input id="exampleFile" name="file" type="file" />
-          <FormText>
-            This is some placeholder block-level help text for the above input.
-            It's a bit lighter and easily wraps to a new line.
-          </FormText>
-        </FormGroup>
-        <FormGroup tag="fieldset">
-          <legend>Radio Buttons</legend>
-          <FormGroup check>
-            <Input name="radio1" type="radio" />{" "}
-            <Label check>
-              Option one is this and that—be sure to include why it's great
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Input name="radio1" type="radio" />{" "}
-            <Label check>
-              Option two can be something else and selecting it will deselect
-              option one
-            </Label>
-          </FormGroup>
-          <FormGroup check disabled>
-            <Input disabled name="radio1" type="radio" />{" "}
-            <Label check>Option three is disabled</Label>
-          </FormGroup>
-        </FormGroup>
-        <FormGroup check>
-          <Input type="checkbox" /> <Label check>Check me out</Label>
-        </FormGroup>
-        <Button>Submit</Button>
       </Form>
+      <Button color="primary" onClick={handleSubmit}>
+        PUBLISH
+      </Button>
     </div>
   );
 }
