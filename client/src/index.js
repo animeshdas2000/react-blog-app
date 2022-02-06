@@ -7,7 +7,6 @@ import Auth from "./components/Auth/Login";
 import Register from "./components/Auth/Register"
 import Blogs from "./components/blogs";
 import Blog from "./components/blog";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import BlogEditor from "./components/BlogEditor";
 import Create from "./components/createBlog";
 import Header from "./components/header";

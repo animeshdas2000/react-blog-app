@@ -6,7 +6,7 @@ specifiers:
   '@testing-library/user-event': ^13.5.0
   axios: ^0.25.0
   bootstrap: ^5.1.3
-  dotenv: ^16.0.0
+  dotenv-webpack: ^7.1.0
   react: ^17.0.2
   react-dom: ^17.0.2
   react-icons: ^4.3.1
@@ -20,7 +20,6 @@ dependencies:
   '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
   '@testing-library/user-event': 13.5.0
   axios: 0.25.0
-  dotenv: 16.0.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-router-dom: 6.2.1_react-dom@17.0.2+react@17.0.2
@@ -30,6 +29,7 @@ dependencies:
 
 devDependencies:
   bootstrap: 5.1.3
+  dotenv-webpack: 7.1.0
   react-icons: 4.3.1_react@17.0.2
 
 packages:
@@ -3987,19 +3987,34 @@ packages:
       tslib: 2.3.1
     dev: false
 
+  /dotenv-defaults/2.0.2:
+    resolution: {integrity: sha512-iOIzovWfsUHU91L5i8bJce3NYK5JXeAwH50Jh6+ARUdLiiGlYWfGw6UkzsYqaXZH/hjE/eCd/PlfM/qqyK0AMg==}
+    dependencies:
+      dotenv: 8.6.0
+    dev: true
+
   /dotenv-expand/5.1.0:
     resolution: {integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==}
     dev: false
+
+  /dotenv-webpack/7.1.0:
+    resolution: {integrity: sha512-+aUOe+nqgLerA/n611oyC15fY79BIkGm2fOxJAcHDonMZ7AtDpnzv/Oe591eHAenIE0t6w03UyxDnLs/YUxx5Q==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      webpack: ^4 || ^5
+    dependencies:
+      dotenv-defaults: 2.0.2
+    dev: true
 
   /dotenv/10.0.0:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
     engines: {node: '>=10'}
     dev: false
 
-  /dotenv/16.0.0:
-    resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
-    engines: {node: '>=12'}
-    dev: false
+  /dotenv/8.6.0:
+    resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
+    engines: {node: '>=10'}
+    dev: true
 
   /duplexer/0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
