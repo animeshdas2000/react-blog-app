@@ -10,7 +10,7 @@ async function connectDB(){
         );
         console.log('DB Connected');
     } catch (err) {
-        console.error(error.message);
+        console.error(err.message);
         process.exit(1);
     }
 }

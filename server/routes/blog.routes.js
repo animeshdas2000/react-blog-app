@@ -35,7 +35,7 @@ router.post("/create", auth, (req, res) => {
 
   newBlog
     .save()
-    .then((result) => res.status(200).json("Blog Created!"))
+    .then((res) => res.status(200).json("Blog Created!"))
     .catch((err) => console.log(err));
 });
 
@@ -47,6 +47,7 @@ router.post("/edit/:id", auth, (req, res) => {
       blog.body = req.body.body;
       // blog.author = req.body.author;
       blog.date = Date.parse(req.body.date);
+      blog.img = req.body.img;
       blog
         .save()
         .then(() => {
