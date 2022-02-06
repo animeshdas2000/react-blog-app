@@ -35,7 +35,7 @@ function Register() {
       },
     };
     axios
-      .post(`${baseURL}api/auth/register`, userData, config)
+      .post(`${baseURL}/api/auth/register`, userData, config)
       .then((res) => res.data)
       .then((data) => {
         if (data.err) {

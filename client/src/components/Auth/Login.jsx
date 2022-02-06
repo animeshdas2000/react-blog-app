@@ -29,7 +29,7 @@ function Login() {
         'Content-Type': 'application/json'
       },
     }
-    axios.post(`${baseURL}api/auth/login`,userData,config)
+    axios.post(`${baseURL}/api/auth/login`,userData,config)
       .then(res=>res.data)
       .then((data)=>{
         if(data.err){

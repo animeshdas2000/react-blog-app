@@ -19,7 +19,7 @@ function Create() {
       },
     };
     axios
-      .post(`${baseURL}api/blog/create`, Blog, config)
+      .post(`${baseURL}/api/blog/create`, Blog, config)
       .then((res) => {
         setTitle("");
         setBody("");
